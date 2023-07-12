@@ -1,0 +1,19 @@
+input[type="text"],
+input[type="number"],
+textarea {
+    background-color: lightgray;
+    padding: 5px;
+}
+
+body {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.outlined {
+    border: 2px solid white;
+    padding: 10px;
+    display: inline-block;
+}
