@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Webhook Sender</title>
+    <style>
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            background-color: lightgray;
+            padding: 5px;
+        }
+
+        body {
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .outlined {
+            border: 2px solid white;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Discord Webhook Sender</h1>
+    <form id="webhookForm">
+        <label for="webhookUrl">Webhook URL:</label>
+        <input type="text" id="webhookUrl" required><br><br>
+        
+        <label for="interval">送信間隔(ms):</label>
+        <input type="number" id="interval" min="0" value="1000"><br><br>
+        
+        <label for="times">送信回数:</label>
+        <input type="number" id="times" min="1" value="1"><br><br>
+        
+        <label for="message">メッセージ:</label><br>
+        <textarea id="message" rows="4" cols="50" required class="outlined"></textarea><br><br>
+        
+        <label for="file">ファイル:</label>
+        <input type="file" id="file">
+        <button type="button" onclick="clearFile()">削除</button><br><br>
+        
+        <input type="submit" value="送信" onclick="sendWebhook(event)">
+    </form>
+    
+    <script>
+        function sendWebhook(event) {
+            event.preventDefault();
+            
+            var webhookUrl = document.getElementById("webhookUrl").value;
+            var interval = document.getElementById("interval").value || 1000;
+            var times = document.getElementById("times").value || 1;
+            var message = document.getElementById("message").value;
+            var fileInput = document.getElementById("file");
+            
+            var payload = {
+                content: message
+            };
+            
+            var formData = new FormData();
+            formData.append("payload_json", JSON.stringify(payload));
+            if (fileInput.files.length > 0) {
+                formData.append("file", fileInput.files[0]);
+            }
+            
+            for (var i = 0; i < times; i++) {
+                setTimeout(function() {
+                    fetch(webhookUrl, {
+                        method: "POST",
+                        body: formData
+                    }).then(function(response) {
+                        console.log("Message sent successfully!");
+                    }).catch(function(error) {
+                        console.error("Error sending message:", error);
+                    });
+                }, i * interval);
+            }
+        }
+        
+        function clearFile() {
+            var fileInput = document.getElementById("file");
+            fileInput.value = null;
+        }
+    </script>
+</body>
+</html>
