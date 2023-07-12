@@ -5,4 +5,4 @@ URL: https://otoneko1102.github.io/discord-webhook/
 <h2>ツールはご自身の責任で使用してください。</h2>
 私は責任を負いかねます。
 <h2>USE THE TOOL AT YOUR OWN RISK.</h2>
-i take no responsibility.
+I take no responsibility.
