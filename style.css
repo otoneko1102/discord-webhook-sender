@@ -15,17 +15,3 @@ textarea {
     box-sizing: border-box;
     font-size: 40px;
 }
-
-button,
-button.outlined {
-    padding: 30px 40px;
-    font-size: 32px;
-    box-sizing: border-box;
-}
-
-.outlined {
-    border: 2px solid white;
-    padding: 10px;
-    display: inline-block;
-    box-sizing: border-box;
-}
