@@ -1,5 +1,11 @@
 input[type="text"],
 input[type="number"],
+
+html {
+    width: 400%;
+    height: auto;
+}
+
 textarea {
     background-color: lightgray;
     padding: 5px;
