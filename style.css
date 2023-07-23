@@ -9,16 +9,17 @@ body {
 
 input[type="text"],
 input[type="number"],
-
 textarea {
-    width: 75%;
-    padding: 75px;
+    width: 100%;
+    padding: 30px;
     box-sizing: border-box;
+    font-size: 40px;
 }
 
-button {
-    padding: 15px 20px;
-    font-size: 16px;
+button,
+button.outlined {
+    padding: 30px 40px;
+    font-size: 32px;
     box-sizing: border-box;
 }
 
