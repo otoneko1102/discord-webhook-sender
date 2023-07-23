@@ -11,8 +11,8 @@ input[type="text"],
 input[type="number"],
 
 textarea {
-    width: 100%;
-    padding: 5px;
+    width: 75%;
+    padding: 75px;
     box-sizing: border-box;
 }
 
