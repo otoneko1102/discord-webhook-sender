@@ -11,23 +11,30 @@
         <label for="webhookUrl">Webhook URL:</label>
         <input type="text" id="webhookUrl" required><br><br>
         
-        <label for="interval">送信間隔(ms):</label>
+        <label for="interval">Interval(ms):</label>
         <input type="number" id="interval" min="0" value="1000"><br><br>
         
-        <label for="times">送信回数:</label>
+        <label for="times">Count:</label>
         <input type="number" id="times" min="1" value="1"><br><br>
         
-        <label for="message">メッセージ:</label><br>
+        <label for="message">Content:</label><br>
         <textarea id="message" rows="4" cols="50" required class="outlined"></textarea><br><br>
         
-        <label for="file">ファイル:</label>
+        <label for="option">Option:</label>
+        <select id="option" name="option">
+            <option value="None" selected>None</option>
+            <option value="Add random string at the top">Add random string at the top</option>
+            <option value="Add random string at the end">Add random string at the end</option>
+        </select><br>
+        
+        <label for="file">Image:</label>
         <input type="file" id="file">
-        <button type="button" onclick="clearFile()">削除</button><br><br>
+        <button type="button" onclick="clearFile()">Clear</button><br><br>
         
         <input type="submit" value="送信" onclick="sendWebhook(event)"><br><br>
         
     </form>
     
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
