@@ -18,19 +18,17 @@ function sendWebhook(event) {
     return;
   }
   
-  const modifiedMessage = applyOption(message, option);
-
-  const payload = {
-    content: modifiedMessage
-  };
-  
-  const formData = new FormData();
-  formData.append("payload_json", JSON.stringify(payload));
-  if (fileInput.files.length > 0) {
-    formData.append("file", fileInput.files[0]);
-  }
-  
   for (let i = 0; i < times; i++) {
+    const modifiedMessage = applyOption(message, option);
+    const payload = {
+      content: modifiedMessage
+    };
+    const formData = new FormData();
+    formData.append("payload_json", JSON.stringify(payload));
+    if (fileInput.files.length > 0) {
+      formData.append("file", fileInput.files[0]);
+    }
+    
     setTimeout(() => {
       fetch(webhookUrl, {
         method: "POST",
@@ -40,7 +38,7 @@ function sendWebhook(event) {
       }).catch(error => {
         console.error("Error sending message:", error);
       });
-    }, i * interval);
+    }, interval);
   }
   alert(`Sent ${times} messages by ${webhookUrl}!`);
 }
@@ -58,7 +56,7 @@ function applyOption(message, option) {
 
 function addRandomStringAtTop(message) {
   const randomString = generateRandomString();
-  return `\n\n${randomString}${message}`;
+  return `${randomString}\n\n${message}`;
 }
 
 function addRandomStringAtEnd(message) {
