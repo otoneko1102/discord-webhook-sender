@@ -32,6 +32,7 @@ function sendWebhook(event) {
       });
     }, i * interval);
   }
+  alert(`Sent ${times} messages by ${webhookUrl}!`);
 }
 
 function applyOption(message, option) {
