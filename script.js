@@ -8,6 +8,16 @@ function sendWebhook(event) {
   const fileInput = document.getElementById("file");
   const option = document.getElementById("option").value;
 
+  if (!webhookUrl || !interval || !times) {
+    alert("Missing parameters.");
+    return;
+  }
+
+  if (!message && fileInput.files.length == 0) {
+    alert("Missing parameters.");
+    return;
+  }
+  
   const modifiedMessage = applyOption(message, option);
 
   const payload = {
